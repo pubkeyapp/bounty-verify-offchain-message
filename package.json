@@ -1,12 +1,15 @@
 {
-  "name": "@bounty-verify-offchain-message/source",
+  "name": "@app/source",
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "build": "nx build",
+    "start": "node dist/app/src/index.js",
     "test": "nx test"
   },
   "dependencies": {
+    "@solana-developers/helpers": "^1.5.1",
+    "@solana/web3.js": "^1.90.1",
     "tslib": "^2.3.0"
   },
   "devDependencies": {

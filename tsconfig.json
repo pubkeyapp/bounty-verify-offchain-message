@@ -5,6 +5,7 @@
     "declaration": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
+    "resolveJsonModule": true,
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es2015",
@@ -14,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@bounty-verify-offchain-message/source": ["src/index.ts"]
+      "@app/source": ["src/index.ts"]
     }
   },
   "files": [],
