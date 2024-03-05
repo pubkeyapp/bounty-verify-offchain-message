@@ -1,7 +1,7 @@
-import * as ed25519 from '@noble/ed25519'
-import * as bs58 from 'bs58'
+import { decode } from 'bs58'
+import { ed25519Verify } from './ed25519-helpers'
 
-export async function verifySignature({
+export function verifySignature({
   challenge,
   signature,
   publicKey,
@@ -11,10 +11,10 @@ export async function verifySignature({
   publicKey: string
 }) {
   const messageBytes = constructSolanaMessage(challenge)
-  const publicKeyBytes = bs58.decode(publicKey)
-  const signatureBytes = bs58.decode(signature)
+  const publicKeyBytes = decode(publicKey)
+  const signatureBytes = decode(signature)
 
-  return ed25519.verify(signatureBytes, messageBytes, publicKeyBytes)
+  return ed25519Verify(signatureBytes, messageBytes, publicKeyBytes)
 }
 
 export function constructSolanaMessage(message: string): Uint8Array {

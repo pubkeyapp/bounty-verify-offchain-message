@@ -1,15 +1,15 @@
-import * as ed25519 from '@noble/ed25519'
-import * as bs58 from 'bs58'
+import { encode } from 'bs58'
 
 import { createChallenge } from './create-challenge'
+import { ed25519GetPublicKey, ed25519RandomPrivateKey } from './ed25519-helpers'
 
 describe('create-challenge', () => {
-  it('should be implemented', async () => {
+  it('should be implemented', () => {
     // ARRANGE
     const message = 'Test Message'
-    const privateKey = ed25519.utils.randomPrivateKey()
-    const publicKeyBytes = await ed25519.getPublicKey(privateKey)
-    const publicKey = bs58.encode(publicKeyBytes)
+    const privateKey = ed25519RandomPrivateKey()
+    const publicKeyBytes = ed25519GetPublicKey(privateKey)
+    const publicKey = encode(publicKeyBytes)
 
     // ACT
     createChallenge({ message, publicKey })
