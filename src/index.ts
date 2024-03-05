@@ -22,17 +22,17 @@ async function main() {
   console.log({
     challenge,
     publicKey,
-    command: `solana sign-offchain-message '${challenge}' `,
+    command: `solana sign-offchain-message '${challenge}' -k {path-to-your-keypair.json}`,
   })
 
   // Prompt the user for their signature.
   const signature = await rl.question('Enter your signature: ')
 
   // Verify the signature.
-  const isValid = verifySignature({
+  const isValid = await verifySignature({
     challenge,
     signature,
-    publicKey: publicKey,
+    publicKey,
   })
 
   // Display the result.
