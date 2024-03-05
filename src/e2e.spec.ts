@@ -1,26 +1,25 @@
-import * as ed25519 from '@noble/ed25519'
-import * as bs58 from 'bs58'
+import { encode } from 'bs58'
 
-import { expect } from 'vitest'
 import { createChallenge } from './lib/create-challenge'
+import { ed25519GetPublicKey, ed25519RandomPrivateKey, ed25519Sign } from './lib/ed25519-helpers'
 import { constructSolanaMessage, verifySignature } from './lib/verify-signature'
 
 describe('e2e', () => {
-  it('should be implemented', async () => {
+  it('should be implemented', () => {
     // ARRANGE
     const message = 'Test Message'
-    const privateKey = ed25519.utils.randomPrivateKey()
-    const publicKeyBytes = await ed25519.getPublicKey(privateKey)
-    const publicKey = bs58.encode(publicKeyBytes)
+    const privateKey = ed25519RandomPrivateKey()
+    const publicKeyBytes = ed25519GetPublicKey(privateKey)
+    const publicKey = encode(publicKeyBytes)
     const challenge = createChallenge({ message, publicKey })
 
     // Signing the message
     const messageBytes = constructSolanaMessage(challenge)
-    const signatureBytes = await ed25519.sign(messageBytes, privateKey)
-    const signature = bs58.encode(signatureBytes)
+    const signatureBytes = ed25519Sign(messageBytes, privateKey)
+    const signature = encode(signatureBytes)
 
     // ACT
-    const isValid = await verifySignature({ challenge, signature, publicKey })
+    const isValid = verifySignature({ challenge, signature, publicKey })
 
     // ASSERT
     expect(createChallenge).toBeDefined()

@@ -1,6 +1,6 @@
 import { createInterface } from 'node:readline/promises'
-import { createChallenge } from './lib/create-challenge'
-import { verifySignature } from './lib/verify-signature'
+import { createChallenge } from './lib/create-challenge.js'
+import { verifySignature } from './lib/verify-signature.js'
 
 // This is the message that we want the end user to sign.
 const messageToSign = 'Sign this message to verify your identity.'
@@ -29,7 +29,7 @@ async function main() {
   const signature = await rl.question('Enter your signature: ')
 
   // Verify the signature.
-  const isValid = await verifySignature({
+  const isValid = verifySignature({
     challenge,
     signature,
     publicKey,

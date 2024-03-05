@@ -6,22 +6,22 @@ settings:
 
 dependencies:
   '@noble/ed25519':
-    specifier: 1.7.1
-    version: 1.7.1
+    specifier: ^2.0.0
+    version: 2.0.0
+  '@noble/hashes':
+    specifier: ^1.3.3
+    version: 1.3.3
   '@solana-developers/helpers':
     specifier: ^1.5.1
     version: 1.5.1
-  '@solana/web3.js':
-    specifier: ^1.90.1
-    version: 1.90.1
   bs58:
     specifier: ^5.0.0
     version: 5.0.0
-  tslib:
-    specifier: ^2.3.0
-    version: 2.6.2
 
 devDependencies:
+  '@nx/esbuild':
+    specifier: ^18.0.7
+    version: 18.0.7(@swc-node/register@1.8.0)(@swc/core@1.3.107)(@types/node@18.16.9)(nx@18.0.7)(typescript@5.3.3)
   '@nx/eslint':
     specifier: 18.0.7
     version: 18.0.7(@swc-node/register@1.8.0)(@swc/core@1.3.107)(@types/node@18.16.9)(nx@18.0.7)
@@ -76,6 +76,9 @@ devDependencies:
   prettier:
     specifier: ^2.6.2
     version: 2.8.8
+  tslib:
+    specifier: ^2.3.0
+    version: 2.6.2
   typescript:
     specifier: ~5.3.2
     version: 5.3.3
@@ -1681,8 +1684,8 @@ packages:
       '@noble/hashes': 1.3.3
     dev: false
 
-  /@noble/ed25519@1.7.1:
-    resolution: {integrity: sha512-Rk4SkJFaXZiznFyC/t77Q0NKS4FL7TLJJsVG2V2oiEq3kJVeTdxysEe/yRWSpnWMe808XRDJ+VFh5pt/FN5plw==}
+  /@noble/ed25519@2.0.0:
+    resolution: {integrity: sha512-/extjhkwFupyopDrt80OMWKdLgP429qLZj+z6sYJz90rF2Iz0gjZh2ArMKPImUl13Kx+0EXI2hN9T/KJV0/Zng==}
     dev: false
 
   /@noble/hashes@1.3.3:
@@ -1717,6 +1720,24 @@ packages:
       '@nx/devkit': 18.0.7(nx@18.0.7)
     transitivePeerDependencies:
       - nx
+    dev: true
+
+  /@nrwl/esbuild@18.0.7(@swc-node/register@1.8.0)(@swc/core@1.3.107)(@types/node@18.16.9)(nx@18.0.7)(typescript@5.3.3):
+    resolution: {integrity: sha512-2VUNQPdLdE0TRnYR5t4tlbCLApq7wSp1poVG4L4edo0n5gf0iq1W+b01YOKzSr4fcfGmiNr2EyV9eG4CJWK6Lw==}
+    dependencies:
+      '@nx/esbuild': 18.0.7(@swc-node/register@1.8.0)(@swc/core@1.3.107)(@types/node@18.16.9)(nx@18.0.7)(typescript@5.3.3)
+    transitivePeerDependencies:
+      - '@babel/traverse'
+      - '@swc-node/register'
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/node'
+      - debug
+      - esbuild
+      - nx
+      - supports-color
+      - typescript
+      - verdaccio
     dev: true
 
   /@nrwl/eslint-plugin-nx@18.0.7(@swc-node/register@1.8.0)(@swc/core@1.3.107)(@types/node@18.16.9)(@typescript-eslint/parser@6.21.0)(eslint-config-prettier@9.1.0)(eslint@8.48.0)(nx@18.0.7)(typescript@5.3.3):
@@ -1828,6 +1849,35 @@ packages:
       tmp: 0.2.3
       tslib: 2.6.2
       yargs-parser: 21.1.1
+    dev: true
+
+  /@nx/esbuild@18.0.7(@swc-node/register@1.8.0)(@swc/core@1.3.107)(@types/node@18.16.9)(nx@18.0.7)(typescript@5.3.3):
+    resolution: {integrity: sha512-hmyhO0eqr013/g8if7PaFm7nnxDeNor8hy7z7YAXyOJcIESpZfgpXX7gPc6wDVSOdI75/OZWmf2zBv2zAKBN8g==}
+    peerDependencies:
+      esbuild: ~0.19.2
+    peerDependenciesMeta:
+      esbuild:
+        optional: true
+    dependencies:
+      '@nrwl/esbuild': 18.0.7(@swc-node/register@1.8.0)(@swc/core@1.3.107)(@types/node@18.16.9)(nx@18.0.7)(typescript@5.3.3)
+      '@nx/devkit': 18.0.7(nx@18.0.7)
+      '@nx/js': 18.0.7(@swc-node/register@1.8.0)(@swc/core@1.3.107)(@types/node@18.16.9)(nx@18.0.7)(typescript@5.3.3)
+      chalk: 4.1.2
+      fast-glob: 3.2.7
+      fs-extra: 11.2.0
+      tsconfig-paths: 4.2.0
+      tslib: 2.6.2
+    transitivePeerDependencies:
+      - '@babel/traverse'
+      - '@swc-node/register'
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/node'
+      - debug
+      - nx
+      - supports-color
+      - typescript
+      - verdaccio
     dev: true
 
   /@nx/eslint-plugin@18.0.7(@swc-node/register@1.8.0)(@swc/core@1.3.107)(@types/node@18.16.9)(@typescript-eslint/parser@6.21.0)(eslint-config-prettier@9.1.0)(eslint@8.48.0)(nx@18.0.7)(typescript@5.3.3):
@@ -5239,6 +5289,7 @@ packages:
 
   /tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
+    dev: true
 
   /type-check@0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
